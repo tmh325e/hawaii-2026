@@ -1,340 +1,392 @@
-/* ================================================
-   SHARED STYLES — Hawaii 2026 Trip Site
-   ================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
 
 :root {
-  --ocean:       #1b4f72;
-  --ocean-deep:  #0e2d42;
-  --ocean-mid:   #2471a3;
-  --ocean-light: #aed6f1;
-  --sand:        #faf6f0;
-  --sand-mid:    #f0e9df;
-  --sand-dark:   #ddd0c0;
-  --lava:        #a93226;
-  --lava-light:  #e74c3c;
-  --palm:        #1e6b45;
-  --palm-light:  #27ae60;
-  --gold:        #b7860b;
-  --gold-light:  #f0a500;
-  --gold-pale:   #fef9e7;
-  --white:       #fffefb;
-  --text:        #1a1a1a;
-  --text-muted:  #666;
-  --radius:      14px;
-  --shadow-sm:   0 2px 10px rgba(0,0,0,0.07);
-  --shadow-md:   0 6px 24px rgba(0,0,0,0.11);
-  --shadow-lg:   0 16px 48px rgba(0,0,0,0.14);
+  --nav-bg:        #2c2418;
+  --nav-active-c:  #e8a030;
+  --nav-inactive:  #f5e4b0;
+  --nav-logo:      #e8a030;
+
+  --page-bg:       #bfb8ac;
+  --card-bg:       #ffffff;
+  --card-tip-bg:   #fffbe8;
+
+  --border-c:      rgba(0,0,0,0.10);
+
+  --confirmed:     #2e6040;
+  --option:        #1a4878;
+  --alert:         #a32020;
+  --gold:          #b07a10;
+  --gold-bg:       #f5e4a0;
+  --gold-text:     #583800;
+
+  --text:          #1a1208;
+  --text-muted:    #3a3020;
+  --text-light:    #5a5040;
+
+  --chip-bg:       #d4cec6;
+  --chip-text:     #2a1e0e;
+  --chip-map-bg:   #ddeaf6;
+  --chip-map-text: #12345e;
+  --chip-menu-bg:  #daf0e4;
+  --chip-menu-text:#1a4a28;
+  --chip-book-bg:  #fde8e4;
+  --chip-book-text:#8a1a10;
+  --chip-warn-bg:  #fde8e4;
+  --chip-warn-text:#8a1a10;
+  --chip-drive-bg: #f5e4a0;
+  --chip-drive-text:#583800;
+  --chip-phone-bg: #daf0e4;
+  --chip-phone-text:#1a4a28;
+
+  --radius:        14px;
+  --shadow:        0 2px 12px rgba(0,0,0,0.13);
+  --shadow-md:     0 6px 24px rgba(0,0,0,0.16);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Outfit', sans-serif;
-  background: var(--sand);
+  background: var(--page-bg);
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
 }
 
-/* ---- NAV ---- */
+/* ── NAV ── */
 .site-nav {
   position: sticky; top: 0; z-index: 100;
-  background: var(--ocean-deep);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  height: 56px;
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 20px;
+  display: flex; align-items: center;
+  height: 52px; gap: 4px;
 }
 .nav-brand {
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 0.5px;
-  margin-right: auto;
-  white-space: nowrap;
+  font-size: 14px; color: var(--nav-logo);
+  margin-right: auto; white-space: nowrap;
+  letter-spacing: 0.3px;
 }
-.nav-brand span { color: var(--gold-light); }
-.nav-links { display: flex; gap: 4px; }
+.nav-links { display: flex; gap: 2px; }
 .nav-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 14px;
-  border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 12px; border-radius: 8px;
   font-size: 13px; font-weight: 500;
-  color: rgba(255,255,255,0.6);
+  color: var(--nav-inactive);
   text-decoration: none;
-  transition: background 0.18s, color 0.18s;
+  transition: background 0.15s, color 0.15s;
   white-space: nowrap;
 }
-.nav-link:hover { background: rgba(255,255,255,0.08); color: white; }
-.nav-link.active { background: rgba(255,255,255,0.12); color: white; }
+.nav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-link.active { background: rgba(232,160,48,0.15); color: var(--nav-active-c); }
 
-/* ---- HERO ---- */
+/* ── HERO ── */
 .hero {
-  background: linear-gradient(155deg, var(--ocean-deep) 0%, var(--ocean) 55%, var(--ocean-mid) 100%);
-  padding: 72px 24px 80px;
+  background: linear-gradient(155deg, #1a1008 0%, #2c2418 45%, #3a3020 100%);
+  padding: 68px 24px 76px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 20%, rgba(240,165,0,0.08) 0%, transparent 40%);
+  background: radial-gradient(ellipse at 25% 60%, rgba(232,160,48,0.08) 0%, transparent 55%),
+              radial-gradient(ellipse at 75% 30%, rgba(255,255,255,0.03) 0%, transparent 50%);
 }
 .hero-wave {
-  position: absolute; bottom: -1px; left: 0; right: 0; height: 56px; pointer-events: none;
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 52px; pointer-events: none;
 }
 .hero-eyebrow {
   font-size: 10px; font-weight: 600;
   letter-spacing: 4px; text-transform: uppercase;
-  color: var(--gold-light); margin-bottom: 14px;
+  color: var(--nav-active-c); margin-bottom: 14px;
+  position: relative;
 }
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(36px, 6vw, 72px);
+  font-size: clamp(34px, 6vw, 70px);
   font-weight: 700; line-height: 1.05;
   color: #fff; margin-bottom: 10px;
+  position: relative;
 }
-.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero h1 em { font-style: italic; color: var(--nav-active-c); }
 .hero-sub {
-  font-size: 14px; color: rgba(255,255,255,0.55);
-  letter-spacing: 1.5px; margin-bottom: 36px;
+  font-size: 13px; color: rgba(255,255,255,0.52);
+  letter-spacing: 1.2px; margin-bottom: 32px;
+  position: relative;
 }
 .hero-pills {
   display: flex; justify-content: center;
-  flex-wrap: wrap; gap: 10px;
+  flex-wrap: wrap; gap: 8px;
+  position: relative;
 }
 .hero-pill {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 40px; padding: 7px 16px;
-  font-size: 12px; color: rgba(255,255,255,0.85);
-  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 40px; padding: 6px 14px;
+  font-size: 12px; color: rgba(255,255,255,0.82);
 }
-.hero-pill strong { color: var(--gold-light); }
+.hero-pill strong { color: var(--nav-active-c); }
 
-/* ---- PAGE BODY ---- */
-.page-body { max-width: 920px; margin: 0 auto; padding: 52px 20px 80px; }
+/* ── PAGE BODY ── */
+.page-body { max-width: 900px; margin: 0 auto; padding: 48px 16px 80px; }
 
-/* ---- SECTION HEADS ---- */
+/* ── SECTION HEADS ── */
 .section-head {
-  display: flex; align-items: center; gap: 14px;
-  margin: 48px 0 22px;
+  display: flex; align-items: center; gap: 12px;
+  margin: 44px 0 20px;
 }
 .section-head:first-child { margin-top: 0; }
 .section-icon {
-  width: 42px; height: 42px; border-radius: 12px;
+  width: 40px; height: 40px; border-radius: 11px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 19px; flex-shrink: 0;
+  font-size: 18px; flex-shrink: 0;
 }
 .section-head h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 26px; font-weight: 600;
-  color: var(--ocean-deep);
+  font-size: 24px; font-weight: 600; color: #1a1208;
 }
 .section-date {
   margin-left: auto; font-size: 11px; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
-  color: var(--text-muted); background: var(--sand-mid);
-  padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+  color: var(--text-light); background: rgba(0,0,0,0.10);
+  padding: 4px 11px; border-radius: 20px; white-space: nowrap;
 }
 
-/* ---- CARDS ---- */
+/* ── CARDS ── */
 .card {
-  background: var(--white);
+  background: var(--card-bg);
   border-radius: var(--radius);
-  padding: 22px 24px;
-  margin-bottom: 14px;
-  box-shadow: var(--shadow-sm);
+  padding: 20px 22px;
+  margin-bottom: 13px;
+  box-shadow: var(--shadow);
   border-left: 4px solid transparent;
-  transition: box-shadow 0.2s, transform 0.2s;
-  position: relative;
+  transition: box-shadow 0.18s, transform 0.18s;
 }
 .card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
-.card.confirmed  { border-left-color: var(--palm); }
-.card.option     { border-left-color: var(--ocean-mid); }
-.card.alert      { border-left-color: var(--lava); }
-.card.tip        { border-left-color: var(--gold); background: var(--gold-pale); }
-.card.homebase   { border-left-color: var(--ocean-deep); }
+.card.confirmed { border-left-color: var(--confirmed); }
+.card.option    { border-left-color: var(--option); }
+.card.alert     { border-left-color: var(--alert); }
+.card.tip       { border-left-color: var(--gold); background: var(--card-tip-bg); }
 
-.card-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.card-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 7px; flex-wrap: wrap; }
+
 .badge {
   font-size: 9px; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
   flex-shrink: 0; margin-top: 4px;
 }
-.badge-confirmed { background: #d5f0e2; color: var(--palm); }
-.badge-option    { background: #d6eaf8; color: var(--ocean); }
-.badge-alert     { background: #fde8e6; color: var(--lava); }
-.badge-tip       { background: #fde68a; color: #7a5000; }
-.badge-info      { background: var(--sand-mid); color: var(--text-muted); }
+.badge-confirmed { background: #d4eddc; color: #1e4a28; }
+.badge-option    { background: #d4e4f4; color: #12345e; }
+.badge-alert     { background: #fde0de; color: #7a1410; }
+.badge-tip       { background: #f5e4a0; color: #583800; }
+.badge-info      { background: rgba(0,0,0,0.08); color: var(--text-muted); }
 
 .card-title {
   font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 600;
-  color: var(--ocean-deep); line-height: 1.2;
+  font-size: 19px; font-weight: 600;
+  color: #1a1208; line-height: 1.2;
 }
 .card-title a {
   color: inherit; text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
+  transition: border-color 0.18s;
 }
-.card-title a:hover { border-bottom-color: var(--ocean); }
+.card-title a:hover { border-bottom-color: var(--option); }
 .card-time {
   font-size: 12px; font-weight: 600;
-  color: var(--gold); margin-bottom: 6px; letter-spacing: 0.5px;
+  color: var(--gold); margin-bottom: 6px;
 }
 .card-body { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
 
-/* ---- CHIPS ---- */
-.chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+/* ── CHIPS ── */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
 .chip {
   display: inline-flex; align-items: center; gap: 4px;
-  font-size: 11.5px; padding: 4px 11px; border-radius: 20px;
-  text-decoration: none; transition: background 0.18s, color 0.18s;
-  color: var(--text-muted); background: var(--sand-mid);
-  white-space: nowrap;
+  font-size: 11.5px; padding: 4px 10px; border-radius: 20px;
+  text-decoration: none; white-space: nowrap;
+  color: var(--chip-text); background: var(--chip-bg);
+  transition: filter 0.15s;
 }
-.chip:hover { background: var(--sand-dark); color: var(--text); }
-.chip.map   { color: var(--ocean); background: #e4f0f8; }
-.chip.map:hover { background: #c8e2f2; }
-.chip.menu  { color: var(--palm); background: #dff2e9; }
-.chip.menu:hover { background: #c3e8d4; }
-.chip.book  { color: var(--lava); background: #fde8e6; }
-.chip.book:hover { background: #fbd5d2; }
-.chip.drive { color: #7a5000; background: var(--gold-pale); }
-.chip.warn  { color: var(--lava); background: #fde8e6; font-weight: 600; }
-.chip.phone { color: var(--palm); background: #dff2e9; }
+.chip:hover { filter: brightness(0.93); }
+.chip.map   { color: var(--chip-map-text);  background: var(--chip-map-bg); }
+.chip.menu  { color: var(--chip-menu-text); background: var(--chip-menu-bg); }
+.chip.book  { color: var(--chip-book-text); background: var(--chip-book-bg); }
+.chip.warn  { color: var(--chip-warn-text); background: var(--chip-warn-bg); font-weight: 600; }
+.chip.drive { color: var(--chip-drive-text);background: var(--chip-drive-bg); }
+.chip.phone { color: var(--chip-phone-text);background: var(--chip-phone-bg); }
 
-/* ---- DIVIDER ---- */
-.divider {
-  border: none; border-top: 2px dashed var(--sand-dark);
-  margin: 44px 0;
-}
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 2px dashed rgba(0,0,0,0.12); margin: 40px 0; }
 
-/* ---- OPTIONS LABEL ---- */
+/* ── OPTIONS LABEL ── */
 .options-label {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: var(--ocean); margin: 20px 0 10px;
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--option);
+  margin: 18px 0 10px;
   display: flex; align-items: center; gap: 10px;
 }
-.options-label::after {
-  content: ''; flex: 1; height: 1px; background: var(--sand-dark);
-}
+.options-label::after { content:''; flex:1; height:1px; background: rgba(0,0,0,0.12); }
 
-/* ---- FLIGHT ROWS ---- */
+/* ── FLIGHT ROWS ── */
 .flight-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 0; border-bottom: 1px solid var(--sand-mid);
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+  flex-wrap: wrap;
 }
 .flight-row:last-child { border-bottom: none; padding-bottom: 0; }
 .flight-no {
-  font-size: 11.5px; font-weight: 700; color: var(--ocean);
-  background: #e4f0f8; padding: 4px 10px; border-radius: 6px;
-  min-width: 68px; text-align: center; flex-shrink: 0;
+  font-size: 11px; font-weight: 700; color: var(--option);
+  background: var(--chip-map-bg); padding: 4px 10px;
+  border-radius: 6px; min-width: 66px; text-align: center; flex-shrink: 0;
 }
-.flight-info { flex: 1; }
+.flight-info { flex: 1; min-width: 140px; }
 .flight-route {
   font-family: 'Playfair Display', serif;
-  font-size: 17px; font-weight: 600; color: var(--ocean-deep);
+  font-size: 16px; font-weight: 600; color: #1a1208;
 }
-.flight-detail { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+.flight-detail { font-size: 11.5px; color: var(--text-light); margin-top: 1px; }
 .flight-time { font-size: 12px; font-weight: 600; color: var(--text); text-align: right; flex-shrink: 0; }
 
-/* ---- RENTAL GRID ---- */
+/* ── RENTAL GRID ── */
 .rental-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 13px;
 }
 .rental-item label {
   display: block; font-size: 9.5px; font-weight: 700;
   letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 3px;
+  color: var(--text-light); margin-bottom: 3px;
 }
 .rental-item p { font-size: 14px; font-weight: 500; color: var(--text); }
 
-/* ---- HOMEBASE SPECIAL ---- */
+/* ── HOMEBASE CARD ── */
 .homebase-card {
-  background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean) 100%);
-  color: white; border-radius: 20px; padding: 30px 32px;
-  margin-bottom: 14px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #1a1008 0%, #2c2418 100%);
+  color: white; border-radius: 18px; padding: 28px 30px;
+  margin-bottom: 13px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 .homebase-card::after {
   content: '🌊'; position: absolute;
-  right: 28px; top: 24px; font-size: 52px; opacity: 0.12;
+  right: 24px; top: 20px; font-size: 50px; opacity: 0.10;
 }
 .homebase-card .hb-label {
   font-size: 10px; font-weight: 600; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px;
+  text-transform: uppercase; color: var(--nav-active-c); margin-bottom: 6px;
 }
 .homebase-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 24px; font-weight: 600; color: white; margin-bottom: 4px;
+  font-size: 22px; font-weight: 600; color: white; margin-bottom: 4px;
 }
-.homebase-card .hb-addr {
-  font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 14px;
-}
+.homebase-card .hb-addr { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 13px; }
 .homebase-card .chips .chip {
   background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.88);
   border: 1px solid rgba(255,255,255,0.1);
 }
-.homebase-card .chips .chip:hover { background: rgba(255,255,255,0.22); }
-.amenities { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.homebase-card .chips .chip:hover { background: rgba(255,255,255,0.2); }
+.amenities { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
 .amenity {
-  font-size: 11.5px; color: rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.1); padding: 3px 11px; border-radius: 20px;
+  font-size: 11.5px; color: rgba(255,255,255,0.68);
+  background: rgba(255,255,255,0.10); padding: 3px 10px; border-radius: 20px;
 }
-.hb-meta { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 14px; line-height: 1.8; }
-.hb-meta strong { color: rgba(255,255,255,0.88); }
+.hb-meta { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 13px; line-height: 1.9; }
+.hb-meta strong { color: rgba(255,255,255,0.85); }
 
-/* ---- EXCURSION TIMELINE ---- */
-.timeline { position: relative; padding-left: 28px; }
-.timeline::before {
-  content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px;
-  width: 2px; background: var(--sand-dark); border-radius: 2px;
+/* ── AREA TAG ── */
+.area-tag {
+  display: inline-block; font-size: 9.5px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; padding: 2px 9px;
+  border-radius: 20px; margin-left: 8px; vertical-align: middle;
+  background: rgba(0,0,0,0.10); color: var(--text-light);
 }
-.timeline-item { position: relative; margin-bottom: 10px; }
-.timeline-item::before {
-  content: ''; position: absolute;
-  left: -24px; top: 22px;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--ocean-mid); border: 2px solid var(--white);
-  box-shadow: 0 0 0 2px var(--ocean-mid);
-}
-.timeline-item.confirmed-item::before { background: var(--palm); box-shadow: 0 0 0 2px var(--palm); }
-
-/* ---- RESTAURANT GRID ---- */
-.rest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-@media (max-width: 640px) {
-  .rest-grid { grid-template-columns: 1fr; }
-  .rental-grid { grid-template-columns: 1fr; }
-  .nav-brand { display: none; }
-  .nav-link { padding: 6px 10px; font-size: 12px; }
-  .hero { padding: 52px 16px 68px; }
-  .page-body { padding: 36px 16px 60px; }
-  .homebase-card { padding: 22px 20px; }
-  .card { padding: 18px; }
+.rest-note {
+  font-size: 12px; color: var(--chip-warn-text); font-weight: 600;
+  background: var(--chip-warn-bg); padding: 6px 12px;
+  border-radius: 8px; display: inline-block; margin-top: 8px;
 }
 
-/* ---- SCROLL FADE ---- */
-.fade {
-  opacity: 0; transform: translateY(18px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-}
+/* ── CALENDAR TABLE ── */
+.cal-wrap { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 13px; }
+.cal-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cal-table thead tr { background: #1a1008; color: white; }
+.cal-table th { padding: 11px 14px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.cal-table td { padding: 10px 14px; border-bottom: 1px solid rgba(0,0,0,0.07); vertical-align: top; }
+.cal-table tr:last-child td { border-bottom: none; }
+.cal-table tr:nth-child(even) td { background: rgba(0,0,0,0.025); }
+.cal-date { font-weight: 700; color: #1a1208; white-space: nowrap; font-size: 12px; }
+.cal-date.excursion { color: var(--confirmed); }
+.cal-date.depart { color: var(--alert); }
+.cal-drive { color: var(--text-light); font-size: 12px; }
+
+/* ── SCROLL FADE ── */
+.fade { opacity: 0; transform: translateY(16px); transition: opacity 0.42s ease, transform 0.42s ease; }
 .fade.visible { opacity: 1; transform: translateY(0); }
 
-/* ---- FOOTER ---- */
+/* ── FOOTER ── */
 .site-footer {
-  background: var(--ocean-deep); color: rgba(255,255,255,0.35);
-  text-align: center; padding: 28px 20px;
+  background: #1a1008; color: rgba(255,255,255,0.35);
+  text-align: center; padding: 26px 20px;
   font-size: 12px; letter-spacing: 0.5px;
 }
 .site-footer strong { color: rgba(255,255,255,0.6); }
-.site-footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-.site-footer a:hover { color: var(--gold-light); }
+.site-footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+.site-footer a:hover { color: var(--nav-active-c); }
+
+/* ══════════════════════════════════════
+   MOBILE — everything ≤ 640px
+══════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Nav — hide brand text, shrink links */
+  .nav-brand { display: none; }
+  .site-nav { padding: 0 10px; justify-content: center; }
+  .nav-link { padding: 6px 10px; font-size: 12px; gap: 4px; }
+
+  /* Hero */
+  .hero { padding: 48px 16px 60px; }
+  .hero-pills { gap: 6px; }
+  .hero-pill { font-size: 11px; padding: 5px 11px; }
+
+  /* Page body */
+  .page-body { padding: 28px 12px 60px; }
+
+  /* Section heads — wrap date badge */
+  .section-head { flex-wrap: wrap; gap: 8px; }
+  .section-date { margin-left: 0; }
+
+  /* Cards */
+  .card { padding: 16px; }
+  .card-title { font-size: 17px; }
+  .card-top { gap: 7px; }
+
+  /* Chips — allow wrapping on small screens */
+  .chips { gap: 5px; }
+  .chip { font-size: 11px; padding: 3px 9px; }
+
+  /* Homebase card */
+  .homebase-card { padding: 20px 18px; }
+  .homebase-card h3 { font-size: 19px; }
+  .homebase-card::after { display: none; }
+
+  /* Rental grid — single column */
+  .rental-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* Flight rows — let time wrap below route */
+  .flight-row { gap: 8px; }
+  .flight-time { text-align: left; width: 100%; margin-top: 2px; font-size: 11.5px; }
+
+  /* Calendar — scrollable wrapper, tighter text */
+  .cal-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .cal-table { min-width: 480px; font-size: 12px; }
+  .cal-table th, .cal-table td { padding: 9px 10px; }
+
+  /* Options label */
+  .options-label { font-size: 9px; letter-spacing: 2px; }
+}
+
+@media (max-width: 400px) {
+  .nav-link { padding: 5px 7px; font-size: 11px; }
+  .hero h1 { font-size: 30px; }
+}
