@@ -1,0 +1,340 @@
+/* ================================================
+   SHARED STYLES — Hawaii 2026 Trip Site
+   ================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+  --ocean:       #1b4f72;
+  --ocean-deep:  #0e2d42;
+  --ocean-mid:   #2471a3;
+  --ocean-light: #aed6f1;
+  --sand:        #faf6f0;
+  --sand-mid:    #f0e9df;
+  --sand-dark:   #ddd0c0;
+  --lava:        #a93226;
+  --lava-light:  #e74c3c;
+  --palm:        #1e6b45;
+  --palm-light:  #27ae60;
+  --gold:        #b7860b;
+  --gold-light:  #f0a500;
+  --gold-pale:   #fef9e7;
+  --white:       #fffefb;
+  --text:        #1a1a1a;
+  --text-muted:  #666;
+  --radius:      14px;
+  --shadow-sm:   0 2px 10px rgba(0,0,0,0.07);
+  --shadow-md:   0 6px 24px rgba(0,0,0,0.11);
+  --shadow-lg:   0 16px 48px rgba(0,0,0,0.14);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--sand);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---- NAV ---- */
+.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ocean-deep);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 56px;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.5px;
+  margin-right: auto;
+  white-space: nowrap;
+}
+.nav-brand span { color: var(--gold-light); }
+.nav-links { display: flex; gap: 4px; }
+.nav-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+.nav-link:hover { background: rgba(255,255,255,0.08); color: white; }
+.nav-link.active { background: rgba(255,255,255,0.12); color: white; }
+
+/* ---- HERO ---- */
+.hero {
+  background: linear-gradient(155deg, var(--ocean-deep) 0%, var(--ocean) 55%, var(--ocean-mid) 100%);
+  padding: 72px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(240,165,0,0.08) 0%, transparent 40%);
+}
+.hero-wave {
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 56px; pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700; line-height: 1.05;
+  color: #fff; margin-bottom: 10px;
+}
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero-sub {
+  font-size: 14px; color: rgba(255,255,255,0.55);
+  letter-spacing: 1.5px; margin-bottom: 36px;
+}
+.hero-pills {
+  display: flex; justify-content: center;
+  flex-wrap: wrap; gap: 10px;
+}
+.hero-pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 40px; padding: 7px 16px;
+  font-size: 12px; color: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+}
+.hero-pill strong { color: var(--gold-light); }
+
+/* ---- PAGE BODY ---- */
+.page-body { max-width: 920px; margin: 0 auto; padding: 52px 20px 80px; }
+
+/* ---- SECTION HEADS ---- */
+.section-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 48px 0 22px;
+}
+.section-head:first-child { margin-top: 0; }
+.section-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; flex-shrink: 0;
+}
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 600;
+  color: var(--ocean-deep);
+}
+.section-date {
+  margin-left: auto; font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); background: var(--sand-mid);
+  padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid transparent;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.card.confirmed  { border-left-color: var(--palm); }
+.card.option     { border-left-color: var(--ocean-mid); }
+.card.alert      { border-left-color: var(--lava); }
+.card.tip        { border-left-color: var(--gold); background: var(--gold-pale); }
+.card.homebase   { border-left-color: var(--ocean-deep); }
+
+.card-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+  flex-shrink: 0; margin-top: 4px;
+}
+.badge-confirmed { background: #d5f0e2; color: var(--palm); }
+.badge-option    { background: #d6eaf8; color: var(--ocean); }
+.badge-alert     { background: #fde8e6; color: var(--lava); }
+.badge-tip       { background: #fde68a; color: #7a5000; }
+.badge-info      { background: var(--sand-mid); color: var(--text-muted); }
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--ocean-deep); line-height: 1.2;
+}
+.card-title a {
+  color: inherit; text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.card-title a:hover { border-bottom-color: var(--ocean); }
+.card-time {
+  font-size: 12px; font-weight: 600;
+  color: var(--gold); margin-bottom: 6px; letter-spacing: 0.5px;
+}
+.card-body { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+/* ---- CHIPS ---- */
+.chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11.5px; padding: 4px 11px; border-radius: 20px;
+  text-decoration: none; transition: background 0.18s, color 0.18s;
+  color: var(--text-muted); background: var(--sand-mid);
+  white-space: nowrap;
+}
+.chip:hover { background: var(--sand-dark); color: var(--text); }
+.chip.map   { color: var(--ocean); background: #e4f0f8; }
+.chip.map:hover { background: #c8e2f2; }
+.chip.menu  { color: var(--palm); background: #dff2e9; }
+.chip.menu:hover { background: #c3e8d4; }
+.chip.book  { color: var(--lava); background: #fde8e6; }
+.chip.book:hover { background: #fbd5d2; }
+.chip.drive { color: #7a5000; background: var(--gold-pale); }
+.chip.warn  { color: var(--lava); background: #fde8e6; font-weight: 600; }
+.chip.phone { color: var(--palm); background: #dff2e9; }
+
+/* ---- DIVIDER ---- */
+.divider {
+  border: none; border-top: 2px dashed var(--sand-dark);
+  margin: 44px 0;
+}
+
+/* ---- OPTIONS LABEL ---- */
+.options-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--ocean); margin: 20px 0 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.options-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--sand-dark);
+}
+
+/* ---- FLIGHT ROWS ---- */
+.flight-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 0; border-bottom: 1px solid var(--sand-mid);
+}
+.flight-row:last-child { border-bottom: none; padding-bottom: 0; }
+.flight-no {
+  font-size: 11.5px; font-weight: 700; color: var(--ocean);
+  background: #e4f0f8; padding: 4px 10px; border-radius: 6px;
+  min-width: 68px; text-align: center; flex-shrink: 0;
+}
+.flight-info { flex: 1; }
+.flight-route {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-weight: 600; color: var(--ocean-deep);
+}
+.flight-detail { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+.flight-time { font-size: 12px; font-weight: 600; color: var(--text); text-align: right; flex-shrink: 0; }
+
+/* ---- RENTAL GRID ---- */
+.rental-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px;
+}
+.rental-item label {
+  display: block; font-size: 9.5px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 3px;
+}
+.rental-item p { font-size: 14px; font-weight: 500; color: var(--text); }
+
+/* ---- HOMEBASE SPECIAL ---- */
+.homebase-card {
+  background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean) 100%);
+  color: white; border-radius: 20px; padding: 30px 32px;
+  margin-bottom: 14px; position: relative; overflow: hidden;
+}
+.homebase-card::after {
+  content: '🌊'; position: absolute;
+  right: 28px; top: 24px; font-size: 52px; opacity: 0.12;
+}
+.homebase-card .hb-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px;
+}
+.homebase-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 600; color: white; margin-bottom: 4px;
+}
+.homebase-card .hb-addr {
+  font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 14px;
+}
+.homebase-card .chips .chip {
+  background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.88);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.homebase-card .chips .chip:hover { background: rgba(255,255,255,0.22); }
+.amenities { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.amenity {
+  font-size: 11.5px; color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.1); padding: 3px 11px; border-radius: 20px;
+}
+.hb-meta { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 14px; line-height: 1.8; }
+.hb-meta strong { color: rgba(255,255,255,0.88); }
+
+/* ---- EXCURSION TIMELINE ---- */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px;
+  width: 2px; background: var(--sand-dark); border-radius: 2px;
+}
+.timeline-item { position: relative; margin-bottom: 10px; }
+.timeline-item::before {
+  content: ''; position: absolute;
+  left: -24px; top: 22px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--ocean-mid); border: 2px solid var(--white);
+  box-shadow: 0 0 0 2px var(--ocean-mid);
+}
+.timeline-item.confirmed-item::before { background: var(--palm); box-shadow: 0 0 0 2px var(--palm); }
+
+/* ---- RESTAURANT GRID ---- */
+.rest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 640px) {
+  .rest-grid { grid-template-columns: 1fr; }
+  .rental-grid { grid-template-columns: 1fr; }
+  .nav-brand { display: none; }
+  .nav-link { padding: 6px 10px; font-size: 12px; }
+  .hero { padding: 52px 16px 68px; }
+  .page-body { padding: 36px 16px 60px; }
+  .homebase-card { padding: 22px 20px; }
+  .card { padding: 18px; }
+}
+
+/* ---- SCROLL FADE ---- */
+.fade {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.fade.visible { opacity: 1; transform: translateY(0); }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: var(--ocean-deep); color: rgba(255,255,255,0.35);
+  text-align: center; padding: 28px 20px;
+  font-size: 12px; letter-spacing: 0.5px;
+}
+.site-footer strong { color: rgba(255,255,255,0.6); }
+.site-footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.site-footer a:hover { color: var(--gold-light); }
